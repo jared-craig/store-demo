@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../../store/store';
 import { fetchProductById } from '../../../store/features/productsSlice';
 import { useParams } from 'next/navigation';
@@ -9,10 +9,26 @@ import Link from 'next/link';
 import { addToCart } from '@/store/features/cartSlice';
 import { formatPrice } from '@/app/cart/helpers';
 import LoadingScreen from '@/components/LoadingScreen';
+import { toast } from 'react-toastify';
+import { Product } from '@/types/product';
+
 export default function ProductDetailsPage() {
   const { id } = useParams();
   const dispatch = useAppDispatch();
   const { product, status } = useAppSelector((state) => state.products);
+  const [isButtonDisabled, setIsButtonDisabled] = useState(false);
+
+  const handleAddToCart = (product: Product) => {
+    if (isButtonDisabled) return;
+
+    setIsButtonDisabled(true);
+    dispatch(addToCart(product));
+    toast.success('Product added to cart');
+
+    setTimeout(() => {
+      setIsButtonDisabled(false);
+    }, 1000);
+  };
 
   useEffect(() => {
     if (id) {
@@ -67,8 +83,9 @@ export default function ProductDetailsPage() {
 
             <div className='flex flex-col md:flex-row gap-4 mt-auto'>
               <button
-                onClick={() => dispatch(addToCart(product))}
-                className='flex-1 px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors font-medium cursor-pointer'
+                onClick={() => handleAddToCart(product)}
+                disabled={isButtonDisabled}
+                className={`flex-1 px-6 py-3 bg-blue-500 text-white rounded-lg transition-colors font-medium cursor-pointer disabled:opacity-50 disabled:cursor-auto disabled:pointer-events-none`}
               >
                 Add to Cart
               </button>
