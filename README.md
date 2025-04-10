@@ -2,10 +2,10 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Tech Stack
 
-Next.js / React
-Tailwind CSS
-Redux
-Typescript
+- Next.js / React
+- Tailwind CSS
+- Redux Toolkit
+- Typescript
 
 ## Example Data
 
