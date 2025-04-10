@@ -12,7 +12,7 @@ import LoadingScreen from '@/components/LoadingScreen';
 export default function ProductDetailsPage() {
   const { id } = useParams();
   const dispatch = useAppDispatch();
-  const { product, status, error } = useAppSelector((state) => state.products);
+  const { product, status } = useAppSelector((state) => state.products);
 
   useEffect(() => {
     if (id) {
