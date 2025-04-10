@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 :root {
   --background: #ffffff;
@@ -20,7 +20,9 @@
 }
 
 body {
-  background: var(--background);
+  background: linear-gradient(to bottom right, var(--color-slate-900), var(--color-gray-950));
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* bg-gradient-to-br from-gray-900 via-gray-800 to-blue-900 */
