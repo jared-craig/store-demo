@@ -5,6 +5,7 @@ import { Providers } from './providers';
 import { Navigation } from '@/components/Navigation';
 import { Suspense } from 'react';
 import LoadingScreen from '@/components/LoadingScreen';
+import { ToastContainer } from 'react-toastify';
 
 const inter = Inter({ subsets: ['latin'] });
 const enriqueta = Enriqueta({
@@ -25,6 +26,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Navigation />
           <Suspense fallback={<LoadingScreen />}>
             <main className={`${enriqueta.className} flex-grow container mx-auto px-4 py-6`}>{children}</main>
+            <ToastContainer />
           </Suspense>
         </Providers>
       </body>
