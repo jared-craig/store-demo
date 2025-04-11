@@ -16,6 +16,7 @@ export default function ProductDetailsPage() {
   const { id } = useParams();
   const dispatch = useAppDispatch();
   const { product, status } = useAppSelector((state) => state.products);
+  const { items } = useAppSelector((state) => state.cart);
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
 
   const handleAddToCart = (product: Product) => {
@@ -23,7 +24,7 @@ export default function ProductDetailsPage() {
 
     setIsButtonDisabled(true);
     dispatch(addToCart(product));
-    toast.success('Product added to cart');
+    toast.success(`Product added to cart!`);
 
     setTimeout(() => {
       setIsButtonDisabled(false);
@@ -54,7 +55,7 @@ export default function ProductDetailsPage() {
   return (
     <div className='p-4 md:p-8'>
       <div className='max-w-6xl mx-auto'>
-        <div className='grid grid-cols-1 md:grid-cols-2 gap-8'>
+        <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
           {/* Image Section */}
           <div className='bg-white rounded-xl p-4 shadow-lg'>
             <div className='relative aspect-square'>

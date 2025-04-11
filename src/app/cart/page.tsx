@@ -31,16 +31,16 @@ export default function CartPage() {
       <div>
         {cart.length > 0 ? (
           cart.map((product) => (
-            <div key={product.id} className='flex justify-between items-center p-4 border-b border-gray-300'>
-              <div className='flex gap-4 items-center'>
+            <div key={product.id} className='flex flex-wrap justify-between items-center p-4 border-b border-gray-300'>
+              <div className='flex flex-shrink-0 gap-4 items-center'>
                 <Link href={`/products/${product.id}`}>
-                  <Image src={product.image} alt={product.title} width={50} height={50} className='rounded-lg' />
+                  <Image src={product.image} alt={product.title} width={50} height={50} className='rounded-lg object-contain' />
                 </Link>
                 <Link href={`/products/${product.id}`} className='text-lg font-medium'>
-                  {product.title}
+                  <span className='truncate line-clamp-1 overflow-hidden max-w-[50vw] block'>{product.title}</span>
                 </Link>
               </div>
-              <div className='flex gap-6'>
+              <div className='flex gap-6 items-center w-full lg:w-auto justify-end lg:justify-start'>
                 <div className='flex items-center gap-2'>
                   <button
                     onClick={() => dispatch(updateQuantity({ id: product.id, increment: false }))}
