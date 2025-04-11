@@ -26,7 +26,7 @@ export default function CartPage() {
   };
 
   return (
-    <div className='p-4 min-h-screen'>
+    <div className='p-4'>
       <h1 className='text-2xl font-normal tracking-tight'>Cart</h1>
       <div>
         {cart.length > 0 ? (

@@ -71,7 +71,7 @@ export default function ProductsPage() {
   };
 
   return (
-    <div className='p-4 min-h-screen'>
+    <div className='p-4'>
       <div className='flex flex-col lg:flex-row space-y-2 lg:space-y-0 justify-between items-center mb-6'>
         <h1 className='text-2xl font-normal tracking-tight'>Products</h1>
         <div className='flex flex-col lg:flex-row gap-2 lg:gap-4'>

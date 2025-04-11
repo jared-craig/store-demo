@@ -52,13 +52,13 @@ export default function ProductDetailsPage() {
   }
 
   return (
-    <div className='min-h-screen p-4 md:p-8'>
+    <div className='p-4 md:p-8'>
       <div className='max-w-6xl mx-auto'>
         <div className='grid grid-cols-1 md:grid-cols-2 gap-8'>
           {/* Image Section */}
           <div className='bg-white rounded-xl p-4 shadow-lg'>
             <div className='relative aspect-square'>
-              <Image src={product.image} alt={product.title} fill className='object-contain p-4' priority />
+              <Image src={product.image} alt={product.title} fill sizes='(max-width: 768px) 100vw, 50vw' className='object-contain p-4' priority />
             </div>
           </div>
 
