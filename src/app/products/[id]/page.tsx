@@ -10,7 +10,7 @@ import { addToCart } from '@/store/features/cartSlice';
 import { formatPrice } from '@/app/cart/helpers';
 import LoadingScreen from '@/components/LoadingScreen';
 import { toast } from 'react-toastify';
-import { Product } from '@/types/product';
+import { Product } from '@/types/Product';
 
 export default function ProductDetailsPage() {
   const { id } = useParams();
@@ -23,11 +23,11 @@ export default function ProductDetailsPage() {
 
     setIsButtonDisabled(true);
     dispatch(addToCart(product));
-    toast.success('Product added to cart');
+    toast.success(`Product added to cart!`);
 
     setTimeout(() => {
       setIsButtonDisabled(false);
-    }, 1000);
+    }, 2500);
   };
 
   useEffect(() => {
@@ -52,13 +52,13 @@ export default function ProductDetailsPage() {
   }
 
   return (
-    <div className='min-h-screen p-4 md:p-8'>
+    <div className='p-4 md:p-8'>
       <div className='max-w-6xl mx-auto'>
-        <div className='grid grid-cols-1 md:grid-cols-2 gap-8'>
+        <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
           {/* Image Section */}
           <div className='bg-white rounded-xl p-4 shadow-lg'>
             <div className='relative aspect-square'>
-              <Image src={product.image} alt={product.title} fill className='object-contain p-4' priority />
+              <Image src={product.image} alt={product.title} fill sizes='(max-width: 768px) 100vw, 50vw' className='object-contain p-4' priority />
             </div>
           </div>
 

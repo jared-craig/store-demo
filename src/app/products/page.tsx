@@ -8,11 +8,12 @@ import { CategorySelect } from '@/components/CategorySelect';
 import { SortSelect, SortOption } from '@/components/SortSelect';
 import { RatingFilter } from '@/components/RatingFilter';
 import { BackToTop } from '@/components/BackToTop';
-import { CATEGORY_DISPLAY_NAMES, Category } from '@/types/categories';
+import { CATEGORY_DISPLAY_NAMES, Category } from '@/types/Category';
+import { Product } from '@/types/Product';
 
 export default function ProductsPage() {
   const dispatch = useAppDispatch();
-  const { products: items, status, error } = useAppSelector((state) => state.products);
+  const { products, status, error } = useAppSelector((state) => state.products);
   const [selectedCategory, setSelectedCategory] = useState<Category | null>(null);
   const [sortOption, setSortOption] = useState<SortOption>('popularity-desc');
   const [minRating, setMinRating] = useState<number | null>(null);
@@ -30,20 +31,20 @@ export default function ProductsPage() {
   }
 
   // Group products by category
-  const productsByCategory = items.reduce((acc, product) => {
+  const productsByCategory = products.reduce((acc, product) => {
     const category = product.category as Category;
     if (!acc[category]) {
       acc[category] = [];
     }
     acc[category].push(product);
     return acc;
-  }, {} as Record<Category, typeof items>);
+  }, {} as Record<Category, Product[]>);
 
   // Get unique categories
   const categories = Object.keys(productsByCategory) as Category[];
 
   // Sort products based on the selected option
-  const sortProducts = (products: typeof items) => {
+  const sortProducts = (products: Product[]) => {
     return [...products].sort((a, b) => {
       switch (sortOption) {
         case 'price-asc':
@@ -65,13 +66,13 @@ export default function ProductsPage() {
   };
 
   // Filter products by rating
-  const filterByRating = (products: typeof items) => {
+  const filterByRating = (products: Product[]) => {
     if (minRating === null) return products;
     return products.filter((product) => product.rating.rate >= minRating);
   };
 
   return (
-    <div className='p-4 min-h-screen'>
+    <div className='p-4'>
       <div className='flex flex-col lg:flex-row space-y-2 lg:space-y-0 justify-between items-center mb-6'>
         <h1 className='text-2xl font-normal tracking-tight'>Products</h1>
         <div className='flex flex-col lg:flex-row gap-2 lg:gap-4'>
