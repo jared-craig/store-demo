@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
-import { CATEGORY_DISPLAY_NAMES, Category } from '@/types/categories';
+import { CATEGORY_DISPLAY_NAMES, Category } from '@/types/Category';
 
 interface CategorySelectProps {
   value: Category | null;

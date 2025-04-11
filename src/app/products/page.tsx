@@ -8,7 +8,7 @@ import { CategorySelect } from '@/components/CategorySelect';
 import { SortSelect, SortOption } from '@/components/SortSelect';
 import { RatingFilter } from '@/components/RatingFilter';
 import { BackToTop } from '@/components/BackToTop';
-import { CATEGORY_DISPLAY_NAMES, Category } from '@/types/categories';
+import { CATEGORY_DISPLAY_NAMES, Category } from '@/types/Category';
 
 export default function ProductsPage() {
   const dispatch = useAppDispatch();

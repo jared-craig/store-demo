@@ -10,7 +10,7 @@ import { addToCart } from '@/store/features/cartSlice';
 import { formatPrice } from '@/app/cart/helpers';
 import LoadingScreen from '@/components/LoadingScreen';
 import { toast } from 'react-toastify';
-import { Product } from '@/types/product';
+import { Product } from '@/types/Product';
 
 export default function ProductDetailsPage() {
   const { id } = useParams();
@@ -27,7 +27,7 @@ export default function ProductDetailsPage() {
 
     setTimeout(() => {
       setIsButtonDisabled(false);
-    }, 1000);
+    }, 2500);
   };
 
   useEffect(() => {

@@ -26,7 +26,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Navigation />
           <Suspense fallback={<LoadingScreen />}>
             <main className={`${enriqueta.className} flex-grow container mx-auto px-4 py-6`}>{children}</main>
-            <ToastContainer />
+            <ToastContainer position='bottom-right' autoClose={2500} newestOnTop theme='dark' />
           </Suspense>
         </Providers>
       </body>
