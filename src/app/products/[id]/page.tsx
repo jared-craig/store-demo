@@ -16,7 +16,6 @@ export default function ProductDetailsPage() {
   const { id } = useParams();
   const dispatch = useAppDispatch();
   const { product, status } = useAppSelector((state) => state.products);
-  const { items } = useAppSelector((state) => state.cart);
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
 
   const handleAddToCart = (product: Product) => {
