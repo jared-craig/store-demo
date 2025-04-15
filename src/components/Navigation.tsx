@@ -2,7 +2,12 @@
 
 import Link from 'next/link';
 import { useAppSelector } from '@/store/store';
-import { ShoppingCartIcon, Squares2X2Icon, HomeIcon } from '@heroicons/react/24/solid';
+import {
+  ShoppingCartIcon,
+  Squares2X2Icon,
+  HomeIcon,
+  EnvelopeIcon,
+} from '@heroicons/react/24/solid';
 
 export function Navigation() {
   const cart = useAppSelector((state) => state.cart.items);
@@ -21,21 +26,38 @@ export function Navigation() {
 
           {/* Desktop Navigation */}
           <div className='hidden md:flex gap-6'>
-            <Link href='/' className='text-gray-300 hover:text-white transition-colors relative group'>
+            <Link
+              href='/'
+              className='text-gray-300 hover:text-white transition-colors relative group'
+            >
               Home
               <span className='absolute bottom-0 left-0 w-0 h-0.5 bg-blue-500 group-hover:w-full transition-all duration-300'></span>
             </Link>
-            <Link href='/products' className='text-gray-300 hover:text-white transition-colors relative group'>
+            <Link
+              href='/products'
+              className='text-gray-300 hover:text-white transition-colors relative group'
+            >
               Products
               <span className='absolute bottom-0 left-0 w-0 h-0.5 bg-blue-500 group-hover:w-full transition-all duration-300'></span>
             </Link>
-            <Link href='/cart' className='text-gray-300 hover:text-white transition-colors relative group'>
-              Cart ({cartCount})<span className='absolute bottom-0 left-0 w-0 h-0.5 bg-blue-500 group-hover:w-full transition-all duration-300'></span>
+            <Link
+              href='/cart'
+              className='text-gray-300 hover:text-white transition-colors relative group'
+            >
+              Cart ({cartCount})
+              <span className='absolute bottom-0 left-0 w-0 h-0.5 bg-blue-500 group-hover:w-full transition-all duration-300'></span>
+            </Link>
+            <Link
+              href='/contact'
+              className='text-gray-300 hover:text-white transition-colors relative group'
+            >
+              Contact
+              <span className='absolute bottom-0 left-0 w-0 h-0.5 bg-blue-500 group-hover:w-full transition-all duration-300'></span>
             </Link>
           </div>
 
           {/* Mobile Navigation */}
-          <div className='md:hidden flex gap-5'>
+          <div className='md:hidden flex gap-4'>
             <Link href='/'>
               <HomeIcon className='w-6 h-6' />
             </Link>
@@ -46,6 +68,9 @@ export function Navigation() {
               <div className='flex gap-1 items-center'>
                 <ShoppingCartIcon className='w-6 h-6' /> ({cartCount})
               </div>
+            </Link>
+            <Link href='/contact'>
+              <EnvelopeIcon className='w-6 h-6' />
             </Link>
           </div>
         </div>
